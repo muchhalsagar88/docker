@@ -38,12 +38,12 @@ sudo pip install docker-compose
 
 ### Virtual machines
 On the first virtual machine, there are two containers namely,
-- redis: This is the docker container which has the redis server
-- redis_ambassador: This is the docker container which connects to the redis server
+- **redis**: This is the docker container which has the redis server
+- **redis_ambassador**: This is the docker container which connects to the redis server
 
 On the second virtual machine, there are two containers namely,
-- redis_ambassador_client: This is the docker container which will connect to the redis amabassador on the mentioned endpoint
-- client_cli: This is the docker container which will connect to the redis through the ambassador and provide a CLI to interact with the Redis instance
+- **redis_ambassador_client**: This is the docker container which will connect to the redis amabassador on the mentioned endpoint
+- **client_cli**: This is the docker container which will connect to the redis through the ambassador and provide a CLI to interact with the Redis instance
 
 The containers on the both the virtual machines can be spawned by running the following command in the directory containing the `docker-compose.yml` file.
 ```
@@ -54,7 +54,9 @@ For the container named `client_cli`, run the following command on the second vi
 docker run -it --link redis_ambassador_client:redis --name client_cli relateiq/redis-cli
 ```
 
-Note: The `client_cli` container cannot be started using docker-compose since the connection environment variable required while initializing the `redis_ambassador_client` container is not set until the command finishes executing. Hence, the cli container is started manually.
+### Note 
+- The `client_cli` container cannot be started using docker-compose since the connection environment variable required while initializing the `redis_ambassador_client` container is not set until the command finishes executing. Hence, the cli container is started manually.
+- The DNS name or the IP of the redis server VM needs to be updated in the [YAML file](task2/client/docker-compose.yml) 
 
 
 
