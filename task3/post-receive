@@ -10,5 +10,6 @@ docker build -t blue_image ~/Sem3/DevOps/wshop_dep/Deployment/deploy/blue-www
 docker tag -f blue_image localhost:5000/docker_image:latest
 docker push localhost:5000/docker_image:latest
 
+# Pull image from the registry and run the container
 docker pull localhost:5000/docker_image:latest
 docker run -p 9090:8080 -td --name blue localhost:5000/docker_image:latest
