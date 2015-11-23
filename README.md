@@ -1,7 +1,7 @@
 # DevOps Homework 4 - Advanced Docker
 
 ## Task 1: File IO using docker containers
-For this task, we have created two images namely `node-reader` and `node-wirter`.
+For this task, we have created two images namely `node-reader` and `node-writer`.
 - Image node-writer: This image installs `Node.js` and `socat` on a Centos base and runs the `main.js` script which randomly generates 20 words and writes to a file(`output.txt`) along with the current timestamp.
 - Image node-reader: This image install `curl` on a Centos base.
 
@@ -58,5 +58,13 @@ docker run -it --link redis_ambassador_client:redis --name client_cli relateiq/r
 - The `client_cli` container cannot be started using docker-compose since the connection environment variable required while initializing the `redis_ambassador_client` container is not set until the command finishes executing. Hence, the cli container is started manually.
 - The DNS name or the IP of the redis server VM needs to be updated in the [YAML file](task2/client/docker-compose.yml) 
 
+## Task 3: Deploy docker container
+In this task, the blue slice of the Deployment workshop has an updated `post-receive` hook which performs the following steps:
+- Stops and removes any container with the name `blue`
+- Deletes the pulled image named `blue_image`
+- Creates a new image (`blue_image`) with the latest code
+- Tags and pushes the image to the local docker registry
+- Runs a container using the latest image pulled from the registry
 
-
+## Screencast
+The screencast for this homework can be found at this [link](http://www.google.com) 
