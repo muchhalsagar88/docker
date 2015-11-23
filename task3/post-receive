@@ -1,0 +1,14 @@
+GIT_WORK_TREE=~/Sem3/DevOps/wshop_dep/Deployment/deploy/blue-www git checkout -f
+
+# Clean up
+docker stop blue
+docker rm blue
+docker rmi blue_image
+
+# Recreate and push a new image
+docker build -t blue_image ~/Sem3/DevOps/wshop_dep/Deployment/deploy/blue-www
+docker tag -f blue_image localhost:5000/docker_image:latest
+docker push localhost:5000/docker_image:latest
+
+docker pull localhost:5000/docker_image:latest
+docker run -p 9090:8080 -td --name blue localhost:5000/docker_image:latest
