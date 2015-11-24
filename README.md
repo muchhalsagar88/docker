@@ -67,4 +67,4 @@ In this task, the blue slice of the Deployment workshop has an updated `post-rec
 - Runs a container using the latest image pulled from the registry
 
 ## Screencast
-The screencast for this homework can be found at this [link](http://www.google.com) 
+The screencast for this homework can be found at this [link](https://youtu.be/ScFIJ8yVuI0) 
